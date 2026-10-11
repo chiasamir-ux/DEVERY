@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEVERY</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#0F7B5F;--a:#E8A33D;--bg:#F7F5F0;--ink:#1B1F1D;--mu:#5A625E;--ln:#E4E0D6}
+*{box-sizing:border-box}
+body{margin:0;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--ln);padding:12px 16px}
+.row{display:flex;align-items:center;gap:12px;max-width:960px;margin:0 auto;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;margin-inline-end:auto}
+.brand b{font-size:26px;letter-spacing:.06em;color:var(--g);display:block;line-height:1}
+.brand small{font-size:11px;color:var(--mu);letter-spacing:.1em}
+main{max-width:960px;margin:0 auto;padding:16px}
+input,select,textarea,button{font:inherit;color:inherit}
+input,select,textarea{height:46px;border:1px solid #D8D4CB;border-radius:12px;padding:0 14px;background:#fff;width:100%}
+textarea{height:90px;padding:10px 14px}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
+.chip{height:44px;padding:0 18px;border:1px solid #D8D4CB;border-radius:22px;background:#fff;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--g);border-color:var(--g);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.card{display:block;text-align:start;padding:0;border:1px solid var(--ln);border-radius:14px;background:#fff;overflow:hidden;cursor:pointer}
+.ph{display:flex;height:120px;align-items:center;justify-content:center;background:#CFD8D2;color:#3F4A44;font-size:13px}
+.b{display:block;padding:10px 12px}
+.pr{display:inline-block;background:var(--a);font-weight:700;padding:2px 10px;border-radius:8px}
+.t{display:block;font-weight:600;font-size:16px;margin-top:8px}
+.m{display:block;font-size:13px;color:var(--mu);margin-top:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border-radius:12px;border:2px solid var(--g);background:var(--g);color:#fff;font-weight:700;text-decoration:none;cursor:pointer}
+.btn.o{background:#fff;color:var(--g)}
+.post{background:var(--g);border-color:var(--g);color:#fff}
+dialog{border:0;border-radius:18px;padding:20px;width:min(440px,92vw)}
+dialog::backdrop{background:rgba(20,35,30,.5)}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 6px}
+:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+#ads{margin-bottom:14px;touch-action:pan-y}
+.ad.go{animation:adin .25s ease}
+@keyframes adin{from{transform:translateX(var(--dx));opacity:.3}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.ad.go{animation:none}}
+.ad{display:flex;gap:14px;align-items:center;background:#14231E;color:#fff;border-radius:16px;padding:14px;min-height:96px}
+.ad img{width:96px;height:72px;object-fit:cover;border-radius:10px}
+.ad .tag{font-size:11px;font-weight:700;background:var(--a);color:#1B1F1D;padding:1px 8px;border-radius:6px}
+.ad h2{margin:6px 0 2px;font-size:17px}.ad p{margin:0;font-size:14px;color:#D9E2DD}
+.ad .btn{height:40px;padding:0 16px;background:var(--a);border-color:var(--a);color:#1B1F1D}
+.dots{display:flex;justify-content:center}
+.dot{width:24px;height:24px;border:0;background:none;position:relative;cursor:pointer}
+.dot::after{content:'';position:absolute;inset:8px;border-radius:50%;background:#B9B4A8}
+.dot[aria-pressed=true]::after{background:var(--g)}
+@media(max-width:560px){.filters{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="row">
+  <div class="brand">
+    <svg width="46" height="46" viewBox="0 0 96 96" role="img" aria-label="DEVERY"><path d="M48 11L85 39V83H11V39Z" fill="#0F7B5F" stroke="#0F7B5F" stroke-width="6" stroke-linejoin="round"/><circle cx="48" cy="29" r="7" fill="#F7F5F0"/><g transform="translate(-1 0)"><path d="M22 69V63Q22 59.5 26 59L36 57.5L42.5 49.5Q43 49 44 49H56Q57.2 49 58 49.8L65.5 57.5L71.5 59Q76 60 76 64V69Z" fill="#F7F5F0"/><path d="M43.5 56.5L47 51.5H51.5V56.5ZM53.5 56.5V51.5H57L62 56.5Z" fill="#0F7B5F"/><circle cx="34" cy="69" r="8.5" fill="#0F7B5F"/><circle cx="64" cy="69" r="8.5" fill="#0F7B5F"/><circle cx="34" cy="69" r="5.8" fill="#E8A33D"/><circle cx="64" cy="69" r="5.8" fill="#E8A33D"/><circle cx="34" cy="69" r="1.8" fill="#0F7B5F"/><circle cx="64" cy="69" r="1.8" fill="#0F7B5F"/></g></svg>
+    <div><b>DEVERY</b><small data-i="tag"></small></div>
+  </div>
+  <div id="langs" style="display:flex;gap:6px"><button class="chip" style="padding:0 12px" data-l="en">EN</button><button class="chip" style="padding:0 12px" data-l="ar">عربي</button><button class="chip" style="padding:0 12px" data-l="ku">کوردی</button></div>
+  <button class="btn post" id="newBtn" data-i="post"></button>
+</div></header>
+
+<main>
+  <section id="ads" aria-label="Advertisements"></section>
+  <div class="filters">
+    <input id="q" type="search" data-p="search" aria-label="Search">
+    <select id="city" aria-label="City"></select>
+    <input id="max" type="number" min="0" data-p="max" aria-label="Max price">
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<dialog id="detail"><div id="detailBody"></div><p><button class="btn o" id="closeD" data-i="close"></button></p></dialog>
+
+<dialog id="postD">
+  <form id="form">
+    <label for="fc" data-i="cat"></label><select id="fc"></select>
+    <label for="ft" data-i="title"></label><input id="ft" required maxlength="80">
+    <label for="fp" data-i="price"></label><input id="fp" type="number" min="1" required>
+    <label for="fcity" data-i="city"></label><select id="fcity"></select>
+    <label for="fph" data-i="phone"></label><input id="fph" type="tel" required placeholder="+964...">
+    <label for="fd" data-i="desc"></label><textarea id="fd" maxlength="500"></textarea>
+    <p style="display:flex;gap:10px"><button class="btn" type="submit" data-i="publish"></button><button class="btn o" type="button" id="cancel" data-i="cancel"></button></p>
+  </form>
+</dialog>
+
+<script>
+const T={
+en:{tag:'A MARKET FOR EVERYONE',search:'Search cars, land, houses',all:'All',cars:'Cars',land:'Land',houses:'Houses',other:'Other',post:'+ Post',cat:'Category',title:'Title',price:'Price (USD)',city:'City',phone:'WhatsApp / phone',desc:'Details',publish:'Publish',cancel:'Cancel',call:'Call',wa:'WhatsApp',empty:'No listings match. Try another filter or post one.',max:'Max price (USD)',ex:'Example',allc:'All cities',close:'Close',ad:'Ad',more:'Learn more'},
+ar:{tag:'سوق للجميع',search:'ابحث عن سيارات، أراضي، عقارات',all:'الكل',cars:'سيارات',land:'أراضي',houses:'عقارات',other:'أخرى',post:'+ أضف إعلان',cat:'الفئة',title:'العنوان',price:'السعر (دولار)',city:'المدينة',phone:'واتساب / هاتف',desc:'التفاصيل',publish:'نشر',cancel:'إلغاء',call:'اتصال',wa:'واتساب',empty:'لا توجد إعلانات مطابقة.',max:'أعلى سعر (دولار)',ex:'مثال',allc:'كل المدن',close:'إغلاق',ad:'إعلان',more:'اعرف المزيد'},
+ku:{tag:'بازاڕێک بۆ هەمووان',search:'گەڕان بۆ ئۆتۆمبێل، زەوی، خانوو',all:'هەمووی',cars:'ئۆتۆمبێل',land:'زەوی',houses:'خانوو',other:'هیتر',post:'+ ڕیکلام',cat:'جۆر',title:'ناونیشان',price:'نرخ (دۆلار)',city:'شار',phone:'واتسئاپ / تەلەفون',desc:'وردەکاری',publish:'بڵاوکردنەوە',cancel:'پاشگەزبوونەوە',call:'پەیوەندی',wa:'واتسئاپ',empty:'هیچ ڕیکلامێک نییە.',max:'زۆرترین نرخ (دۆلار)',ex:'نموونە',allc:'هەموو شارەکان',close:'داخستن',ad:'ڕیکلام',more:'زیاتر بزانە'}};
+const CITIES=['Erbil','Baghdad','Sulaymaniyah','Duhok','Basra','Mosul','Kirkuk','Najaf'];
+const CATS=['cars','land','houses','other'];
+const KEY='devery_listings';
+const seed=[
+ {id:1,cat:'cars',title:'Toyota Corolla 2012',price:6500,city:'Erbil',phone:'',desc:'',sample:1},
+ {id:2,cat:'land',title:'Land 300 m²',price:45000,city:'Baghdad',phone:'',desc:'',sample:1},
+ {id:3,cat:'houses',title:'2-bedroom apartment',price:38000,city:'Sulaymaniyah',phone:'',desc:'',sample:1},
+ {id:4,cat:'other',title:'Used washing machine',price:120,city:'Duhok',phone:'',desc:'',sample:1}];
+let items=null,lang='en',cat='all';
+try{const sl=localStorage.getItem('devery_lang');if(T[sl])lang=sl}catch(e){}
+try{items=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!Array.isArray(items))items=seed;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n).toLocaleString('en-US')+' USD';
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){}};
+const opts=(arr,lab)=>arr.map(v=>`<option value="${v}">${lab(v)}</option>`).join('');
+
+/* ===== ADVERTISERS: edit this list. One object = one ad. =====
+   title: ad headline | text: short details | img: picture link (https://...) or ''
+   link: advertiser website/WhatsApp link (https://...) or '' | cta: button text
+   phone: advertiser phone with country code, e.g. '+9647501234567', or ''          */
+const ADS=[
+ {title:'Advertise on DEVERY',text:'Show your business to buyers in Erbil, Baghdad and other cities.',img:'',link:'',cta:'Contact us',phone:''},
+ {title:'Your ad here',text:'Add a headline, short details, a picture and your website or phone number.',img:'',link:'',cta:'',phone:''}];
+let adI=0;
+const safe=u=>/^https?:\/\//i.test(u||'')?u:'';
+function renderAds(dir=0){
+  const L=T[lang],a=ADS[adI%ADS.length];
+  if(!a){$('#ads').innerHTML='';return}
+  const u=safe(a.link),im=safe(a.img),d=(a.phone||'').replace(/\D/g,'');
+  $('#ads').innerHTML=`<div class="ad${dir?' go':''}" style="--dx:${dir*40}px">${im?`<img src="${esc(im)}" alt="" draggable="false">`:''}<div style="flex:1"><span class="tag">${L.ad}</span><h2>${esc(a.title)}</h2><p>${esc(a.text)}</p></div><div style="display:flex;flex-direction:column;gap:6px">${u?`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener sponsored">${esc(a.cta||L.more)}</a>`:''}${d?`<a class="btn" href="tel:+${d}">${L.call}</a>`:''}</div></div>`+
+   (ADS.length>1?`<div class="dots">${ADS.map((_,k)=>`<button class="dot" data-k="${k}" aria-label="Ad ${k+1}" aria-pressed="${k===adI}"></button>`).join('')}</div>`:'');
+}
+$('#ads').onclick=e=>{const b=e.target.closest('.dot');if(b){adI=+b.dataset.k;renderAds()}};
+/* swipe left/right on the banner to change ads (direction flips automatically for Arabic/Kurdish) */
+let sx=null,sy=0,swiped=false;
+const goAd=n=>{adI=(adI+n+ADS.length)%ADS.length;renderAds(n)};
+$('#ads').addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;swiped=false});
+$('#ads').addEventListener('pointercancel',()=>{sx=null});
+$('#ads').addEventListener('pointerup',e=>{
+  if(sx===null||ADS.length<2)return;
+  const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){
+    swiped=true;setTimeout(()=>{swiped=false},300);
+    const rtl=document.documentElement.dir==='rtl';
+    goAd((dx<0)!==rtl?1:-1);
+  }
+});
+$('#ads').addEventListener('click',e=>{if(swiped){e.preventDefault();swiped=false}},true);
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{if(ADS.length>1&&!$('#ads').matches(':hover,:focus-within')){adI=(adI+1)%ADS.length;renderAds()}},6000);
+function applyLang(){
+  const L=T[lang];
+  document.querySelectorAll('[data-l]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===lang));
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='en'?'ltr':'rtl';
+  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=L[e.dataset.i]);
+  document.querySelectorAll('[data-p]').forEach(e=>e.placeholder=L[e.dataset.p]);
+  const c=$('#city').value||'all';
+  $('#city').innerHTML=`<option value="all">${L.allc}</option>`+opts(CITIES,v=>v);
+  $('#city').value=c;
+  $('#fcity').innerHTML=opts(CITIES,v=>v);
+  $('#fc').innerHTML=opts(CATS,v=>L[v]);
+  $('#chips').innerHTML=['all',...CATS].map(k=>`<button class="chip" data-c="${k}" aria-pressed="${k===cat}">${L[k]}</button>`).join('');
+  render();renderAds();
+}
+function render(){
+  const L=T[lang],q=$('#q').value.toLowerCase(),c=$('#city').value,m=+$('#max').value||Infinity;
+  const list=items.filter(i=>(cat==='all'||i.cat===cat)&&(c==='all'||i.city===c)&&i.price<=m&&(i.title+' '+i.desc).toLowerCase().includes(q));
+  $('#grid').innerHTML=list.length?list.map(i=>`<button class="card" data-id="${i.id}"><span class="ph">${L[i.cat]}</span><span class="b"><span class="pr">${fmt(i.price)}</span><span class="t">${esc(i.title)}</span><span class="m">${esc(i.city)}${i.sample?' · '+L.ex:''}</span></span></button>`).join(''):`<p>${L.empty}</p>`;
+}
+function openDetail(id){
+  const i=items.find(x=>x.id===id),L=T[lang];if(!i)return;
+  const d=(i.phone||'').replace(/\D/g,'');
+  $('#detailBody').innerHTML=`<span class="pr">${fmt(i.price)}</span><h2>${esc(i.title)}</h2><p class="m">${esc(i.city)} · ${L[i.cat]}</p><p>${esc(i.desc||'')}</p>`+
+   (d?`<p style="display:flex;gap:10px"><a class="btn" href="https://wa.me/${d}" target="_blank" rel="noopener">${L.wa}</a><a class="btn o" href="tel:+${d}">${L.call}</a></p>`:'');
+  $('#detail').showModal();
+}
+$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(b){cat=b.dataset.c;applyLang()}};
+$('#grid').onclick=e=>{const b=e.target.closest('.card');if(b)openDetail(+b.dataset.id)};
+['#q','#city','#max'].forEach(s=>$(s).addEventListener('input',render));
+$('#langs').onclick=e=>{const b=e.target.closest('[data-l]');if(b){lang=b.dataset.l;try{localStorage.setItem('devery_lang',lang)}catch(x){}applyLang()}};
+$('#newBtn').onclick=()=>$('#postD').showModal();
+$('#cancel').onclick=()=>$('#postD').close();
+$('#closeD').onclick=()=>$('#detail').close();
+$('#form').onsubmit=e=>{
+  e.preventDefault();
+  if($('#fph').value.replace(/\D/g,'').length<8){$('#fph').setCustomValidity('Enter a full number with country code, e.g. +964 750 000 0000');$('#fph').reportValidity();return}
+  $('#fph').setCustomValidity('');
+  items.unshift({id:Date.now(),cat:$('#fc').value,title:$('#ft').value.trim(),price:+$('#fp').value,city:$('#fcity').value,phone:$('#fph').value.trim(),desc:$('#fd').value.trim()});
+  save();$('#form').reset();$('#postD').close();render();
+};
+applyLang();
+</script>
+</body>
+</html>
