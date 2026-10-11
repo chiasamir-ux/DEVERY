@@ -36,6 +36,36 @@ dialog{border:0;border-radius:18px;padding:20px;width:min(440px,92vw)}
 dialog::backdrop{background:rgba(20,35,30,.5)}
 label{display:block;font-size:13px;font-weight:600;margin:12px 0 6px}
 :focus-visible{outline:3px solid var(--a);outline-offset:2px}
+html.big body{font-size:19px}
+dialog#menu{margin:0;inset-block:0;inset-inline-start:0;inset-inline-end:auto;height:100dvh;max-height:100dvh;width:min(360px,88vw);padding:0;border-radius:0 18px 18px 0;overflow-y:auto;background:var(--bg)}
+html[dir=rtl] dialog#menu{border-radius:18px 0 0 18px}
+.mtop{display:flex;align-items:center;gap:12px;background:var(--g);color:#fff;padding:18px 16px}
+.av{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex:none}
+.mwho{flex:1;display:flex;flex-direction:column;gap:6px}
+.mwho b{font-size:18px}
+.mbtns{display:flex;gap:8px;flex-wrap:wrap}
+.btn.mini{height:38px;padding:0 14px;font-size:14px;border-color:#fff;background:#fff;color:var(--g)}
+.btn.mini.o{background:transparent;color:#fff}
+.mx{width:44px;height:44px;border:0;background:none;color:#fff;font-size:28px;cursor:pointer;flex:none}
+.mh{margin:18px 16px 4px;font-size:15px;color:var(--mu)}
+.mrow{display:block;width:100%;text-align:start;min-height:48px;padding:0 16px;border:0;border-bottom:1px solid var(--ln);background:none;cursor:pointer;font-size:16px}
+.biz{padding:10px 0;border-bottom:1px solid var(--ln)}
+.biz b,.biz .m{display:block}
+.note{font-size:12px;color:var(--mu)}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px}
+.tools label{margin:0 0 4px}
+.gh{font-size:18px;margin:20px 0 10px}
+.grid.list{grid-template-columns:1fr}
+.grid.list .card{display:flex}
+.grid.list .ph{width:112px;height:auto;min-height:96px;flex:none}
+.grid.list .b{flex:1}
+footer{border-top:1px solid var(--ln);margin-top:24px;padding:20px 16px 28px}
+.link{display:inline-block;background:none;border:0;padding:10px 8px;cursor:pointer;color:var(--g);font-weight:600;text-decoration:underline}
+.so{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid #D8D4CB;border-radius:50%;background:#fff;color:var(--g);margin-inline-end:8px}
+.so.off{color:#B9B4A8}
+dialog h2{margin:0 0 8px}
+dialog li{margin:6px 0}
+.set{display:flex;gap:8px;flex-wrap:wrap}
 #ads{margin-bottom:14px;touch-action:pan-y}
 .ad.go{animation:adin .25s ease}
 @keyframes adin{from{transform:translateX(var(--dx));opacity:.3}to{transform:none;opacity:1}}
@@ -49,16 +79,17 @@ label{display:block;font-size:13px;font-weight:600;margin:12px 0 6px}
 .dot{width:24px;height:24px;border:0;background:none;position:relative;cursor:pointer}
 .dot::after{content:'';position:absolute;inset:8px;border-radius:50%;background:#B9B4A8}
 .dot[aria-pressed=true]::after{background:var(--g)}
-@media(max-width:560px){.filters{grid-template-columns:1fr}}
+@media(max-width:560px){.filters{grid-template-columns:1fr}.tools{grid-template-columns:1fr 1fr}.tools .wide{grid-column:1/-1}}
 </style>
 </head>
 <body>
 <header><div class="row">
+  <button class="chip" id="menuBtn" aria-label="Menu" style="padding:0 14px;display:inline-flex;align-items:center;gap:8px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span data-i="all"></span></button>
   <div class="brand">
     <svg width="46" height="46" viewBox="0 0 96 96" role="img" aria-label="DEVERY"><path d="M48 11L85 39V83H11V39Z" fill="#0F7B5F" stroke="#0F7B5F" stroke-width="6" stroke-linejoin="round"/><circle cx="48" cy="29" r="7" fill="#F7F5F0"/><g transform="translate(-1 0)"><path d="M22 69V63Q22 59.5 26 59L36 57.5L42.5 49.5Q43 49 44 49H56Q57.2 49 58 49.8L65.5 57.5L71.5 59Q76 60 76 64V69Z" fill="#F7F5F0"/><path d="M43.5 56.5L47 51.5H51.5V56.5ZM53.5 56.5V51.5H57L62 56.5Z" fill="#0F7B5F"/><circle cx="34" cy="69" r="8.5" fill="#0F7B5F"/><circle cx="64" cy="69" r="8.5" fill="#0F7B5F"/><circle cx="34" cy="69" r="5.8" fill="#E8A33D"/><circle cx="64" cy="69" r="5.8" fill="#E8A33D"/><circle cx="34" cy="69" r="1.8" fill="#0F7B5F"/><circle cx="64" cy="69" r="1.8" fill="#0F7B5F"/></g></svg>
     <div><b>DEVERY</b><small data-i="tag"></small></div>
   </div>
-  <div id="langs" style="display:flex;gap:6px"><button class="chip" style="padding:0 12px" data-l="en">EN</button><button class="chip" style="padding:0 12px" data-l="ar">عربي</button><button class="chip" style="padding:0 12px" data-l="ku">کوردی</button></div>
+  <button class="chip" id="langBtn" aria-label="Language" style="padding:0 14px;display:inline-flex;align-items:center;gap:6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><span id="langCur">EN</span></button>
   <button class="btn post" id="newBtn" data-i="post"></button>
 </div></header>
 
@@ -70,8 +101,60 @@ label{display:block;font-size:13px;font-weight:600;margin:12px 0 6px}
     <input id="max" type="number" min="0" data-p="max" aria-label="Max price">
   </div>
   <div class="chips" id="chips"></div>
-  <div class="grid" id="grid"></div>
+  <div class="tools">
+    <div><label for="vw" data-i="view"></label><select id="vw"></select></div>
+    <div class="wide"><label for="sb" data-i="sort"></label><select id="sb"></select></div>
+    <div><label for="gb" data-i="group"></label><select id="gb"></select></div>
+  </div>
+  <div id="grid"></div>
 </main>
+
+<footer>
+  <div class="row" style="justify-content:space-between">
+    <nav><button class="link" data-pg="about" data-i="about"></button><button class="link" data-pg="safety" data-i="safety"></button><button class="link" data-pg="terms" data-i="terms"></button><button class="link" data-pg="contact" data-i="contact"></button></nav>
+    <div><span data-i="follow" style="font-weight:600;margin-inline-end:10px"></span><span id="soc"></span></div>
+  </div>
+  <p style="text-align:center;font-size:13px;color:var(--mu)">&copy; DEVERY</p>
+</footer>
+
+<dialog id="menu"><div id="menuB"></div></dialog>
+
+<dialog id="authD"><h2 id="authT"></h2>
+<form id="authF">
+  <div id="upF">
+    <label for="an" data-i="name"></label><input id="an" maxlength="60" autocomplete="name">
+    <label for="at" data-i="acctype"></label><select id="at"></select>
+    <div id="bizF" hidden><label for="abn" data-i="bizname"></label><input id="abn" maxlength="80"><label for="abt" data-i="biztype"></label><select id="abt"></select></div>
+    <label for="ac" data-i="city"></label><select id="ac"></select>
+  </div>
+  <label for="aph" data-i="phone"></label><input id="aph" type="tel" required placeholder="+964...">
+  <p id="aerr" role="alert" style="color:#B3261E;margin:8px 0 0"></p>
+  <p class="note" data-i="devnote"></p>
+  <p style="display:flex;gap:10px"><button class="btn" type="submit" id="aGo"></button><button class="btn o" type="button" id="aCancel" data-i="cancel"></button></p>
+</form>
+<p><button class="link" id="aSwitch"></button></p></dialog>
+
+<dialog id="acctD"><h2 data-i="youracct"></h2><div id="acctB"></div>
+  <p style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn o" id="outBtn" data-i="signout"></button><button class="btn o" id="delAcct" data-i="delacct"></button></p>
+  <p><button class="btn" id="acctClose" data-i="done"></button></p></dialog>
+
+<dialog id="progD"><h2 data-i="programs"></h2><div id="progB"></div><p><button class="btn o" id="progClose" data-i="close"></button></p></dialog>
+
+<dialog id="langD"><h2 data-i="lang"></h2>
+  <div class="set" style="flex-direction:column"><button class="chip" style="width:100%;text-align:start" data-l="en">English</button><button class="chip" style="width:100%;text-align:start" data-l="ar">عربي</button><button class="chip" style="width:100%;text-align:start" data-l="ku">کوردی</button></div>
+  <p><button class="btn o" id="langClose" data-i="close"></button></p>
+</dialog>
+
+<dialog id="setD"><h2 data-i="set"></h2>
+  <label data-i="lang"></label>
+  <div class="set" id="setLangs"><button class="chip" data-l="en">EN</button><button class="chip" data-l="ar">عربي</button><button class="chip" data-l="ku">کوردی</button></div>
+  <label for="setCity" data-i="dc"></label><select id="setCity"></select>
+  <label style="display:flex;align-items:center;gap:10px"><input type="checkbox" id="big" style="width:24px;height:24px"><span data-i="ts"></span></label>
+  <p><button class="btn o" id="resetMine" data-i="reset"></button></p>
+  <p><button class="btn" id="setClose" data-i="done"></button></p>
+</dialog>
+
+<dialog id="info"><h2 id="infoT"></h2><div id="infoB"></div><p><button class="btn o" id="infoClose" data-i="close"></button></p></dialog>
 
 <dialog id="detail"><div id="detailBody"></div><p><button class="btn o" id="closeD" data-i="close"></button></p></dialog>
 
@@ -89,19 +172,27 @@ label{display:block;font-size:13px;font-weight:600;margin:12px 0 6px}
 
 <script>
 const T={
-en:{tag:'A MARKET FOR EVERYONE',search:'Search cars, land, houses',all:'All',cars:'Cars',land:'Land',houses:'Houses',other:'Other',post:'+ Post',cat:'Category',title:'Title',price:'Price (USD)',city:'City',phone:'WhatsApp / phone',desc:'Details',publish:'Publish',cancel:'Cancel',call:'Call',wa:'WhatsApp',empty:'No listings match. Try another filter or post one.',max:'Max price (USD)',ex:'Example',allc:'All cities',close:'Close',ad:'Ad',more:'Learn more'},
-ar:{tag:'سوق للجميع',search:'ابحث عن سيارات، أراضي، عقارات',all:'الكل',cars:'سيارات',land:'أراضي',houses:'عقارات',other:'أخرى',post:'+ أضف إعلان',cat:'الفئة',title:'العنوان',price:'السعر (دولار)',city:'المدينة',phone:'واتساب / هاتف',desc:'التفاصيل',publish:'نشر',cancel:'إلغاء',call:'اتصال',wa:'واتساب',empty:'لا توجد إعلانات مطابقة.',max:'أعلى سعر (دولار)',ex:'مثال',allc:'كل المدن',close:'إغلاق',ad:'إعلان',more:'اعرف المزيد'},
-ku:{tag:'بازاڕێک بۆ هەمووان',search:'گەڕان بۆ ئۆتۆمبێل، زەوی، خانوو',all:'هەمووی',cars:'ئۆتۆمبێل',land:'زەوی',houses:'خانوو',other:'هیتر',post:'+ ڕیکلام',cat:'جۆر',title:'ناونیشان',price:'نرخ (دۆلار)',city:'شار',phone:'واتسئاپ / تەلەفون',desc:'وردەکاری',publish:'بڵاوکردنەوە',cancel:'پاشگەزبوونەوە',call:'پەیوەندی',wa:'واتسئاپ',empty:'هیچ ڕیکلامێک نییە.',max:'زۆرترین نرخ (دۆلار)',ex:'نموونە',allc:'هەموو شارەکان',close:'داخستن',ad:'ڕیکلام',more:'زیاتر بزانە'}};
+en:{tag:'A MARKET FOR EVERYONE',search:'Search cars, land, houses',all:'All',cars:'Cars',land:'Land',houses:'Houses',other:'Other',post:'+ Post',cat:'Category',title:'Title',price:'Price (USD)',city:'City',phone:'WhatsApp / phone',desc:'Details',publish:'Publish',cancel:'Cancel',call:'Call',wa:'WhatsApp',empty:'No listings match. Try another filter or post one.',max:'Max price (USD)',ex:'Example',allc:'All cities',close:'Close',ad:'Ad',more:'Learn more',set:'Settings',lang:'Language',dc:'Default city',ts:'Large text',about:'About',safety:'Safety tips',terms:'Terms & Privacy',contact:'Contact',report:'Report',del:'Delete',sold:'Sold',ms:'Mark as sold',follow:'Follow us',reset:'Delete my listings on this device',done:'Done',view:'View',grid:'Grid',list:'List',sort:'Sort by',newest:'Newest',plow:'Price: low to high',phigh:'Price: high to low',group:'Group by',none:'None',bycat:'Category',bycity:'City',phones:'Phones',electronics:'Electronics',furniture:'Furniture',fashion:'Fashion',hello:'Hello',signin:'Sign in',signup:'Sign up',signout:'Sign out',trending:'Trending',best:'Best Sellers',newrel:'New Releases',shopcat:'Shop by Category',programs:'Programs & Features',supset:'Support & Settings',youracct:'Your Account',privacy:'Privacy',content:'Content',name:'Name',acctype:'Account type',personal:'Personal',business:'Business',bizname:'Business name',biztype:'Business type',openbiz:'Open a business account',bizacc:'Business accounts',mylist:'My listings',delacct:'Delete my account on this device',devnote:'Your account is saved on this device only for now.',supermarket:'Supermarkets',hypermarket:'Hypermarkets',mobileshop:'Mobile shops',cardealer:'Car dealers',realestate:'Real estate offices',bizother:'Other businesses'},
+ar:{tag:'سوق للجميع',search:'ابحث عن سيارات، أراضي، عقارات',all:'الكل',cars:'سيارات',land:'أراضي',houses:'عقارات',other:'أخرى',post:'+ أضف إعلان',cat:'الفئة',title:'العنوان',price:'السعر (دولار)',city:'المدينة',phone:'واتساب / هاتف',desc:'التفاصيل',publish:'نشر',cancel:'إلغاء',call:'اتصال',wa:'واتساب',empty:'لا توجد إعلانات مطابقة.',max:'أعلى سعر (دولار)',ex:'مثال',allc:'كل المدن',close:'إغلاق',ad:'إعلان',more:'اعرف المزيد',set:'الإعدادات',lang:'اللغة',dc:'المدينة الافتراضية',ts:'نص كبير',about:'من نحن',safety:'نصائح الأمان',terms:'الشروط والخصوصية',contact:'اتصل بنا',report:'إبلاغ',del:'حذف',sold:'تم البيع',ms:'تحديد كمباع',follow:'تابعنا',reset:'حذف إعلاناتي على هذا الجهاز',done:'تم',view:'العرض',grid:'شبكة',list:'قائمة',sort:'ترتيب حسب',newest:'الأحدث',plow:'السعر: الأقل أولاً',phigh:'السعر: الأعلى أولاً',group:'تجميع حسب',none:'بدون',bycat:'الفئة',bycity:'المدينة',phones:'هواتف',electronics:'إلكترونيات',furniture:'أثاث',fashion:'أزياء',hello:'مرحباً',signin:'تسجيل الدخول',signup:'إنشاء حساب',signout:'تسجيل الخروج',trending:'الرائج',best:'الأكثر مبيعاً',newrel:'أحدث الإضافات',shopcat:'تسوق حسب الفئة',programs:'البرامج والميزات',supset:'الدعم والإعدادات',youracct:'حسابك',privacy:'الخصوصية',content:'المحتوى',name:'الاسم',acctype:'نوع الحساب',personal:'شخصي',business:'تجاري',bizname:'اسم النشاط',biztype:'نوع النشاط',openbiz:'افتح حساباً تجارياً',bizacc:'الحسابات التجارية',mylist:'إعلاناتي',delacct:'حذف حسابي على هذا الجهاز',devnote:'يتم حفظ حسابك على هذا الجهاز فقط حالياً.',supermarket:'سوبرماركت',hypermarket:'هايبرماركت',mobileshop:'محلات الموبايل',cardealer:'معارض السيارات',realestate:'مكاتب عقارات',bizother:'أعمال أخرى'},
+ku:{tag:'بازاڕێک بۆ هەمووان',search:'گەڕان بۆ ئۆتۆمبێل، زەوی، خانوو',all:'هەمووی',cars:'ئۆتۆمبێل',land:'زەوی',houses:'خانوو',other:'هیتر',post:'+ ڕیکلام',cat:'جۆر',title:'ناونیشان',price:'نرخ (دۆلار)',city:'شار',phone:'واتسئاپ / تەلەفون',desc:'وردەکاری',publish:'بڵاوکردنەوە',cancel:'پاشگەزبوونەوە',call:'پەیوەندی',wa:'واتسئاپ',empty:'هیچ ڕیکلامێک نییە.',max:'زۆرترین نرخ (دۆلار)',ex:'نموونە',allc:'هەموو شارەکان',close:'داخستن',ad:'ڕیکلام',more:'زیاتر بزانە',set:'ڕێکخستنەکان',lang:'زمان',dc:'شاری بنەڕەتی',ts:'نووسینی گەورە',about:'دەربارە',safety:'ئامۆژگاری سەلامەتی',terms:'مەرج و تایبەتمەندی',contact:'پەیوەندی',report:'ڕاپۆرت',del:'سڕینەوە',sold:'فرۆشرا',ms:'وەک فرۆشراو دیاری بکە',follow:'شوێنمان بکەوە',reset:'سڕینەوەی ڕیکلامەکانم لەسەر ئەم ئامێرە',done:'تەواو',view:'پیشاندان',grid:'تۆڕ',list:'لیست',sort:'ڕیزکردن بە پێی',newest:'نوێترین',plow:'نرخ: کەمترین یەکەم',phigh:'نرخ: زۆرترین یەکەم',group:'گرووپکردن بە پێی',none:'هیچ',bycat:'جۆر',bycity:'شار',phones:'مۆبایل',electronics:'ئەلیکترۆنیات',furniture:'کەلوپەلی ماڵ',fashion:'جلوبەرگ',hello:'سڵاو',signin:'چوونەژوورەوە',signup:'خۆتۆمارکردن',signout:'چوونەدەرەوە',trending:'باو',best:'زۆرترین فرۆشراو',newrel:'نوێترین زیادکراو',shopcat:'کڕین بەپێی جۆر',programs:'بەرنامە و تایبەتمەندییەکان',supset:'پشتگیری و ڕێکخستنەکان',youracct:'هەژمارەکەت',privacy:'تایبەتمەندی',content:'ناوەڕۆک',name:'ناو',acctype:'جۆری هەژمار',personal:'کەسی',business:'بازرگانی',bizname:'ناوی کار',biztype:'جۆری کار',openbiz:'هەژماری بازرگانی بکەرەوە',bizacc:'هەژمارە بازرگانییەکان',mylist:'ڕیکلامەکانم',delacct:'سڕینەوەی هەژمارەکەم لەسەر ئەم ئامێرە',devnote:'هەژمارەکەت تەنها لەسەر ئەم ئامێرە پاشەکەوت دەکرێت لە ئێستادا.',supermarket:'سوپەرمارکێت',hypermarket:'هایپەرمارکێت',mobileshop:'دوکانی مۆبایل',cardealer:'نمایشگای ئۆتۆمبێل',realestate:'نووسینگەی خانووبەرە',bizother:'کاری تر'}};
 const CITIES=['Erbil','Baghdad','Sulaymaniyah','Duhok','Basra','Mosul','Kirkuk','Najaf'];
-const CATS=['cars','land','houses','other'];
+const CATS=['cars','land','houses','phones','electronics','furniture','fashion','other'];
 const KEY='devery_listings';
 const seed=[
  {id:1,cat:'cars',title:'Toyota Corolla 2012',price:6500,city:'Erbil',phone:'',desc:'',sample:1},
  {id:2,cat:'land',title:'Land 300 m²',price:45000,city:'Baghdad',phone:'',desc:'',sample:1},
  {id:3,cat:'houses',title:'2-bedroom apartment',price:38000,city:'Sulaymaniyah',phone:'',desc:'',sample:1},
- {id:4,cat:'other',title:'Used washing machine',price:120,city:'Duhok',phone:'',desc:'',sample:1}];
+ {id:4,cat:'other',title:'Used washing machine',price:120,city:'Duhok',phone:'',desc:'',sample:1},
+ {id:5,cat:'phones',title:'Used smartphone',price:150,city:'Erbil',phone:'',desc:'',sample:1},
+ {id:6,cat:'furniture',title:'Dining table with 6 chairs',price:220,city:'Baghdad',phone:'',desc:'',sample:1}];
 let items=null,lang='en',cat='all';
 try{const sl=localStorage.getItem('devery_lang');if(T[sl])lang=sl}catch(e){}
+let defCity='all';
+const pref={view:'grid',sort:'newest',group:'none'};
+let trend='',bizF='all',accts=[],cur='',authMode='in';
+try{accts=JSON.parse(localStorage.getItem('devery_accts')||'[]');cur=localStorage.getItem('devery_cur')||''}catch(e){}
+try{Object.assign(pref,JSON.parse(localStorage.getItem('devery_pref')||'{}'))}catch(e){}
+try{const dc=localStorage.getItem('devery_city');if(dc&&CITIES.includes(dc))defCity=dc;if(localStorage.getItem('devery_big'))document.documentElement.classList.add('big')}catch(e){}
 try{items=JSON.parse(localStorage.getItem(KEY))}catch(e){}
 if(!Array.isArray(items))items=seed;
 const $=s=>document.querySelector(s);
@@ -117,6 +208,84 @@ const opts=(arr,lab)=>arr.map(v=>`<option value="${v}">${lab(v)}</option>`).join
 const ADS=[
  {title:'Advertise on DEVERY',text:'Show your business to buyers in Erbil, Baghdad and other cities.',img:'',link:'',cta:'Contact us',phone:''},
  {title:'Your ad here',text:'Add a headline, short details, a picture and your website or phone number.',img:'',link:'',cta:'',phone:''}];
+/* ===== YOUR DETAILS: fill these in =====
+   SITE.wa: your WhatsApp with country code, e.g. '+9647501234567' (used for Contact and Report)
+   SITE.email: your email address
+   SOCIAL: put your full page link in each u:'' (https://...). Icons turn green once a link is added. */
+const SITE={wa:'',email:''};
+const SOCIAL=[
+ {n:'Instagram',u:'',p:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/>'},
+ {n:'TikTok',u:'',p:'<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.4 2 4 5 4.2"/>'},
+ {n:'Facebook',u:'',p:'<path d="M14 21v-8h3l.5-3.5H14V7.7c0-1 .4-1.7 1.8-1.7h1.8V3.1C17.2 3 16.2 3 15.1 3c-2.5 0-4.6 1.5-4.6 4.4v2.1h-3V13h3v8z"/>'},
+ {n:'Snapchat',u:'',p:'<path d="M12 3c3 0 4.5 2.2 4.5 5v2c1 0 2 .3 2 1l-2 1c0 1.5 1.5 2.5 2.5 3-1 1-2.5 1-3.5 1-.7 1-1.5 2-3.5 2s-2.8-1-3.5-2c-1 0-2.5 0-3.5-1 1-.5 2.5-1.5 2.5-3l-2-1c0-.7 1-1 2-1V8c0-2.8 1.5-5 4.5-5z"/>'},
+ {n:'Telegram',u:'',p:'<path d="M21 4L3 11l6 2.5L11 20l3-4 4.5 3.5z"/><path d="M9 13.5L21 4"/>'},
+ {n:'WhatsApp',u:'',p:'<path d="M4 20l1.3-4.2A8 8 0 1 1 8.4 18.8z"/><path d="M9 9c0 3 3 6 6 6"/>'},
+ {n:'YouTube',u:'',p:'<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>'}];
+function renderSocial(){
+  $('#soc').innerHTML=SOCIAL.map(x=>{
+    const u=safe(x.u),svg=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${x.p}</svg>`;
+    return u?`<a class="so" href="${esc(u)}" target="_blank" rel="noopener" aria-label="${x.n}">${svg}</a>`:`<span class="so off" role="img" aria-label="${x.n}">${svg}</span>`}).join('');
+}
+const PAGES={
+ about:'<p>DEVERY is a free marketplace for affordable cars, land, houses and everyday items in Iraq and the Kurdistan Region.</p><p>Buyers and sellers contact each other directly by phone or WhatsApp.</p>',
+ safety:'<ul><li>Meet in a public place, in daytime, and bring someone with you.</li><li>Never send money before you have seen the item.</li><li>For land and houses, check the ownership papers (deed). For cars, check the registration and papers.</li><li>Be careful when a price looks too good to be true.</li><li>DEVERY does not sell items or guarantee any deal.</li></ul>',
+ terms:'<p>Listings are posted by users. DEVERY is not part of any deal between buyer and seller.</p><ul><li>Do not post fake, stolen or illegal items.</li><li>Phone numbers you add to a listing are shown to people who view it.</li><li>We may remove listings that break these rules.</li><li>Your settings and listings are currently stored on your own device.</li></ul>'};
+function showInfo(k){
+  const L=T[lang];$('#infoT').textContent=L[k];
+  let h=PAGES[k]||'';
+  if(k==='contact'){const w=SITE.wa.replace(/\D/g,'');h=(w?`<p><a class="btn" href="https://wa.me/${w}" target="_blank" rel="noopener">${L.wa}</a></p>`:'')+(SITE.email?`<p><a class="btn o" href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a></p>`:'')||'<p>Contact details coming soon.</p>'}
+  $('#infoB').innerHTML=h;$('#info').showModal();
+}
+const BIZ=['supermarket','hypermarket','mobileshop','cardealer','realestate','bizother'];
+/* ===== BUSINESS CUSTOMERS: add your real business customers here (n=name, t=type, c=city, u=website link, ph=phone) ===== */
+const BUSINESSES=[
+ {n:'Example Supermarket',t:'supermarket',c:'Erbil',u:'',ph:'',sample:1},
+ {n:'Example Hypermarket',t:'hypermarket',c:'Sulaymaniyah',u:'',ph:'',sample:1},
+ {n:'Example Mobile Shop',t:'mobileshop',c:'Baghdad',u:'',ph:'',sample:1}];
+Object.assign(PAGES,{
+ prog:'Shops and companies can open a business account on DEVERY to be listed here: supermarkets, hypermarkets, mobile shops, car dealers, real estate offices and more.',
+ privacy:'<p>What DEVERY stores:</p><ul><li>Your listings, settings and account details are saved on your own device for now.</li><li>Phone numbers you add to listings are shown to people who open them.</li></ul><p>You can delete your listings in Settings and your account in Your Account.</p>',
+ content:'<p>You can post cars, land, houses and everyday items that you own and are able to sell.</p><p>Not allowed:</p><ul><li>Fake, stolen or illegal items</li><li>Weapons, drugs and adult content</li><li>Misleading prices or photos</li><li>Offensive or hateful text</li></ul><p>Use Report on a listing if you see something wrong.</p>'});
+const curUser=()=>accts.find(a=>a.id===cur);
+const saveAcc=()=>{try{localStorage.setItem('devery_accts',JSON.stringify(accts));localStorage.setItem('devery_cur',cur)}catch(e){}};
+const score=i=>(i.v||0)+(i.sold?5:0);
+const ICON_P='<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>';
+function renderMenu(){
+  const L=T[lang],u=curUser(),H=t=>`<h3 class="mh">${t}</h3>`,R=(a,t)=>`<button class="mrow" data-m="${a}">${t}</button>`;
+  $('#menuB').innerHTML=`<div class="mtop"><div class="av">${ICON_P}</div><div class="mwho">`+
+   (u?`<b>${esc(u.name)}</b><span>${u.type==='business'?esc(u.bizName):L.personal}</span>`:`<b>${L.hello}</b><span class="mbtns"><button class="btn mini" data-m="in">${L.signin}</button><button class="btn mini o" data-m="up">${L.signup}</button></span>`)+
+   `</div><button class="mx" data-m="x" aria-label="${L.close}">&times;</button></div>`+
+   H(L.trending)+R('best',L.best)+R('new',L.newrel)+
+   H(L.shopcat)+CATS.map(k=>R('cat:'+k,L[k])).join('')+
+   H(L.programs)+R('prog',L.bizacc)+R('bizup',L.openbiz)+
+   H(L.supset)+R('acct',L.youracct)+R('privacy',L.privacy)+R('content',L.content)+R('set',L.set)+R('contact',L.contact)+R('safety',L.safety)+R('about',L.about)+(u?R('out',L.signout):'');
+}
+function openAuth(m,biz){
+  authMode=m;const L=T[lang];
+  $('#authT').textContent=m==='up'?L.signup:L.signin;
+  $('#aGo').textContent=m==='up'?L.signup:L.signin;
+  $('#aSwitch').textContent=m==='up'?L.signin:L.signup;
+  $('#upF').hidden=m!=='up';$('#an').required=m==='up';
+  if(biz)$('#at').value='business';
+  const b=$('#at').value==='business';$('#bizF').hidden=!b;$('#abn').required=m==='up'&&b;
+  $('#aerr').textContent='';
+  if(!$('#authD').open)$('#authD').showModal();
+}
+function openAcct(){
+  const u=curUser();if(!u){openAuth('in');return}
+  const L=T[lang],n=items.filter(i=>i.mine).length;
+  $('#acctB').innerHTML=`<p><b>${esc(u.name)}</b></p><p class="m">${esc(u.phone)} · ${u.type==='business'?L.business:L.personal}${u.city?' · '+esc(u.city):''}</p>`+(u.type==='business'?`<p>${esc(u.bizName)} · ${L[u.bizType]||''}</p>`:'')+`<p class="m">${L.mylist}: ${n}</p>`;
+  $('#acctD').showModal();
+}
+function openProg(){
+  const L=T[lang];
+  const all=[...BUSINESSES,...accts.filter(a=>a.type==='business').map(a=>({n:a.bizName,t:a.bizType,c:a.city,ph:a.phone,u:''}))];
+  const shown=bizF==='all'?all:all.filter(b=>b.t===bizF);
+  const chips=['all',...BIZ].map(k=>`<button class="chip" data-t="${k}" aria-pressed="${k===bizF}">${k==='all'?L.all:L[k]}</button>`).join('');
+  const rows=shown.map(b=>{const d=(b.ph||'').replace(/\D/g,''),u=safe(b.u);return `<div class="biz"><b>${esc(b.n)}</b><span class="m">${L[b.t]||''}${b.c?' · '+esc(b.c):''}${b.sample?' · '+L.ex:''}</span>${u?`<a class="link" href="${esc(u)}" target="_blank" rel="noopener">${L.more}</a>`:''}${d?`<a class="link" href="tel:+${d}">${L.call}</a>`:''}</div>`}).join('');
+  $('#progB').innerHTML=`<p>${PAGES.prog}</p><p><button class="btn" data-b="up">${L.openbiz}</button></p><div class="chips">${chips}</div>`+(rows||'<p>No businesses yet.</p>');
+  if(!$('#progD').open)$('#progD').showModal();
+}
 let adI=0;
 const safe=u=>/^https?:\/\//i.test(u||'')?u:'';
 function renderAds(dir=0){
@@ -150,30 +319,49 @@ function applyLang(){
   document.documentElement.dir=lang==='en'?'ltr':'rtl';
   document.querySelectorAll('[data-i]').forEach(e=>e.textContent=L[e.dataset.i]);
   document.querySelectorAll('[data-p]').forEach(e=>e.placeholder=L[e.dataset.p]);
-  const c=$('#city').value||'all';
+  const c=$('#city').value||defCity;
   $('#city').innerHTML=`<option value="all">${L.allc}</option>`+opts(CITIES,v=>v);
   $('#city').value=c;
   $('#fcity').innerHTML=opts(CITIES,v=>v);
+  $('#setCity').innerHTML=`<option value="all">${L.allc}</option>`+opts(CITIES,v=>v);$('#setCity').value=defCity;
   $('#fc').innerHTML=opts(CATS,v=>L[v]);
+  $('#vw').innerHTML=opts(['grid','list'],v=>L[v]);$('#vw').value=pref.view;
+  $('#sb').innerHTML=opts(['newest','plow','phigh'],v=>L[v]);$('#sb').value=pref.sort;
+  $('#gb').innerHTML=opts(['none','bycat','bycity'],v=>L[v]);$('#gb').value=pref.group;
+  $('#langCur').textContent={en:'EN',ar:'عربي',ku:'کوردی'}[lang];
+  $('#at').innerHTML=opts(['personal','business'],v=>L[v]);$('#abt').innerHTML=opts(BIZ,v=>L[v]);$('#ac').innerHTML=opts(CITIES,v=>v);
+  renderMenu();
   $('#chips').innerHTML=['all',...CATS].map(k=>`<button class="chip" data-c="${k}" aria-pressed="${k===cat}">${L[k]}</button>`).join('');
-  render();renderAds();
+  render();renderAds();renderSocial();
 }
+function cardHtml(i,L){return `<button class="card" data-id="${i.id}"><span class="ph">${L[i.cat]}</span><span class="b"><span class="pr">${fmt(i.price)}</span><span class="t">${esc(i.title)}</span><span class="m">${esc(i.city)}${i.sample?' · '+L.ex:''}${i.sold?' · '+L.sold:''}</span></span></button>`}
 function render(){
   const L=T[lang],q=$('#q').value.toLowerCase(),c=$('#city').value,m=+$('#max').value||Infinity;
   const list=items.filter(i=>(cat==='all'||i.cat===cat)&&(c==='all'||i.city===c)&&i.price<=m&&(i.title+' '+i.desc).toLowerCase().includes(q));
-  $('#grid').innerHTML=list.length?list.map(i=>`<button class="card" data-id="${i.id}"><span class="ph">${L[i.cat]}</span><span class="b"><span class="pr">${fmt(i.price)}</span><span class="t">${esc(i.title)}</span><span class="m">${esc(i.city)}${i.sample?' · '+L.ex:''}</span></span></button>`).join(''):`<p>${L.empty}</p>`;
+  const srt=trend==='best'?'best':trend==='new'?'newest':pref.sort;
+  list.sort(srt==='best'?(a,b)=>score(b)-score(a)||b.id-a.id:srt==='plow'?(a,b)=>a.price-b.price:srt==='phigh'?(a,b)=>b.price-a.price:(a,b)=>b.id-a.id);
+  const bar=trend?`<p><button class="chip" id="clearTrend" aria-label="${L.close}">${trend==='best'?L.best:L.newrel} &times;</button></p>`:'';
+  if(!list.length){$('#grid').innerHTML=bar+`<p>${L.empty}</p>`;return}
+  const box=g=>`<div class="grid${pref.view==='list'?' list':''}">${g.map(i=>cardHtml(i,L)).join('')}</div>`;
+  if(pref.group==='none'){$('#grid').innerHTML=bar+box(list);return}
+  const byCat=pref.group==='bycat',key=byCat?'cat':'city',order=byCat?CATS:CITIES;
+  $('#grid').innerHTML=bar+order.filter(k=>list.some(i=>i[key]===k)).map(k=>{const g=list.filter(i=>i[key]===k);return `<h2 class="gh">${byCat?L[k]:esc(k)} (${g.length})</h2>`+box(g)}).join('');
 }
 function openDetail(id){
   const i=items.find(x=>x.id===id),L=T[lang];if(!i)return;
+  i.v=(i.v||0)+1;save();
   const d=(i.phone||'').replace(/\D/g,'');
-  $('#detailBody').innerHTML=`<span class="pr">${fmt(i.price)}</span><h2>${esc(i.title)}</h2><p class="m">${esc(i.city)} · ${L[i.cat]}</p><p>${esc(i.desc||'')}</p>`+
-   (d?`<p style="display:flex;gap:10px"><a class="btn" href="https://wa.me/${d}" target="_blank" rel="noopener">${L.wa}</a><a class="btn o" href="tel:+${d}">${L.call}</a></p>`:'');
+  const w=SITE.wa.replace(/\D/g,''),rm=encodeURIComponent('Report listing: '+i.title+' (#'+i.id+')');
+  const ru=w?`https://wa.me/${w}?text=${rm}`:(SITE.email?`mailto:${SITE.email}?subject=${rm}`:'');
+  $('#detailBody').innerHTML=`<span class="pr">${fmt(i.price)}</span><h2>${esc(i.title)}</h2><p class="m">${esc(i.city)} · ${L[i.cat]}${i.sold?' · '+L.sold:''}</p><p>${esc(i.desc||'')}</p>`+
+   (d?`<p style="display:flex;gap:10px"><a class="btn" href="https://wa.me/${d}" target="_blank" rel="noopener">${L.wa}</a><a class="btn o" href="tel:+${d}">${L.call}</a></p>`:'')+
+   `<p style="display:flex;gap:10px;flex-wrap:wrap">${i.mine?`<button class="btn o" data-a="sold" data-id="${i.id}">${L.ms}</button><button class="btn o" data-a="del" data-id="${i.id}">${L.del}</button>`:''}${ru?`<a class="link" href="${esc(ru)}" target="_blank" rel="noopener">${L.report}</a>`:''}</p>`;
   $('#detail').showModal();
 }
 $('#chips').onclick=e=>{const b=e.target.closest('.chip');if(b){cat=b.dataset.c;applyLang()}};
-$('#grid').onclick=e=>{const b=e.target.closest('.card');if(b)openDetail(+b.dataset.id)};
+$('#grid').onclick=e=>{if(e.target.closest('#clearTrend')){trend='';render();return}const b=e.target.closest('.card');if(b)openDetail(+b.dataset.id)};
 ['#q','#city','#max'].forEach(s=>$(s).addEventListener('input',render));
-$('#langs').onclick=e=>{const b=e.target.closest('[data-l]');if(b){lang=b.dataset.l;try{localStorage.setItem('devery_lang',lang)}catch(x){}applyLang()}};
+['#langD','#setLangs'].forEach(q=>$(q).onclick=e=>{const b=e.target.closest('[data-l]');if(b){lang=b.dataset.l;try{localStorage.setItem('devery_lang',lang)}catch(x){}applyLang();if(e.currentTarget.id==='langD')e.currentTarget.close()}});
 $('#newBtn').onclick=()=>$('#postD').showModal();
 $('#cancel').onclick=()=>$('#postD').close();
 $('#closeD').onclick=()=>$('#detail').close();
@@ -181,9 +369,58 @@ $('#form').onsubmit=e=>{
   e.preventDefault();
   if($('#fph').value.replace(/\D/g,'').length<8){$('#fph').setCustomValidity('Enter a full number with country code, e.g. +964 750 000 0000');$('#fph').reportValidity();return}
   $('#fph').setCustomValidity('');
-  items.unshift({id:Date.now(),cat:$('#fc').value,title:$('#ft').value.trim(),price:+$('#fp').value,city:$('#fcity').value,phone:$('#fph').value.trim(),desc:$('#fd').value.trim()});
+  items.unshift({id:Date.now(),cat:$('#fc').value,title:$('#ft').value.trim(),price:+$('#fp').value,city:$('#fcity').value,phone:$('#fph').value.trim(),desc:$('#fd').value.trim(),mine:1});
   save();$('#form').reset();$('#postD').close();render();
 };
+$('#detailBody').onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const id=+b.dataset.id;
+  if(b.dataset.a==='del')items=items.filter(x=>x.id!==id);else{const x=items.find(y=>y.id===id);if(x)x.sold=!x.sold}
+  save();$('#detail').close();render()};
+$('#menuBtn').onclick=()=>{renderMenu();$('#menu').showModal()};
+$('#setClose').onclick=()=>$('#setD').close();
+$('#setCity').onchange=e=>{defCity=e.target.value;try{localStorage.setItem('devery_city',defCity)}catch(x){}$('#city').value=defCity;render()};
+$('#big').checked=document.documentElement.classList.contains('big');
+$('#big').onchange=e=>{document.documentElement.classList.toggle('big',e.target.checked);try{e.target.checked?localStorage.setItem('devery_big','1'):localStorage.removeItem('devery_big')}catch(x){}};
+$('#resetMine').onclick=()=>{items=items.filter(i=>!i.mine);save();render();$('#setD').close()};
+document.querySelectorAll('[data-pg]').forEach(b=>b.onclick=()=>showInfo(b.dataset.pg));
+$('#infoClose').onclick=()=>$('#info').close();
+$('#langBtn').onclick=()=>$('#langD').showModal();
+$('#langClose').onclick=()=>$('#langD').close();
+[['#vw','view'],['#sb','sort'],['#gb','group']].forEach(([q,k])=>$(q).onchange=e=>{pref[k]=e.target.value;try{localStorage.setItem('devery_pref',JSON.stringify(pref))}catch(x){}render()});
+$('#menu').onclick=e=>{
+  if(e.target===$('#menu')){$('#menu').close();return}
+  const b=e.target.closest('[data-m]');if(!b)return;
+  const a=b.dataset.m;$('#menu').close();
+  if(a==='in'||a==='up')openAuth(a);
+  else if(a==='best'||a==='new'){trend=a;cat='all';applyLang();window.scrollTo(0,0)}
+  else if(a.startsWith('cat:')){trend='';cat=a.slice(4);applyLang();window.scrollTo(0,0)}
+  else if(a==='prog')openProg();
+  else if(a==='bizup')openAuth('up',true);
+  else if(a==='acct')openAcct();
+  else if(a==='set')$('#setD').showModal();
+  else if(a==='out'){cur='';saveAcc();renderMenu()}
+  else if(a!=='x')showInfo(a);
+};
+$('#at').onchange=()=>{const b=$('#at').value==='business';$('#bizF').hidden=!b;$('#abn').required=b&&authMode==='up'};
+$('#aSwitch').onclick=()=>openAuth(authMode==='up'?'in':'up');
+$('#aCancel').onclick=()=>$('#authD').close();
+$('#authF').onsubmit=e=>{
+  e.preventDefault();
+  const ph=$('#aph').value.replace(/\D/g,''),ex=accts.find(a=>a.id===ph),err=$('#aerr');
+  if(ph.length<8){err.textContent='Enter your full phone number with country code.';return}
+  if(authMode==='in'){if(!ex){err.textContent='No account with this phone number on this device.';return}cur=ph}
+  else{
+    if(ex){err.textContent='An account with this phone number already exists. Sign in instead.';return}
+    const biz=$('#at').value==='business';
+    accts.push({id:ph,phone:$('#aph').value.trim(),name:$('#an').value.trim(),type:biz?'business':'personal',bizName:biz?$('#abn').value.trim():'',bizType:biz?$('#abt').value:'',city:$('#ac').value});
+    cur=ph;
+  }
+  saveAcc();$('#authF').reset();$('#authD').close();renderMenu();
+};
+$('#acctClose').onclick=()=>$('#acctD').close();
+$('#outBtn').onclick=()=>{cur='';saveAcc();$('#acctD').close();renderMenu()};
+$('#delAcct').onclick=()=>{accts=accts.filter(a=>a.id!==cur);cur='';saveAcc();$('#acctD').close();renderMenu()};
+$('#progClose').onclick=()=>$('#progD').close();
+$('#progB').onclick=e=>{const t=e.target.closest('[data-t]');if(t){bizF=t.dataset.t;openProg();return}if(e.target.closest('[data-b]')){$('#progD').close();openAuth('up',true)}};
 applyLang();
 </script>
 </body>
